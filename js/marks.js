@@ -1,11 +1,12 @@
 $(document).ready(function () {
-  const BACKEND_API_BASE_URL = 'http://localhost:5000'; // Hardcoded for static files
+  // BACKEND_API_BASE_URL is now from config.js
   const token = localStorage.getItem('token');
   if (!token) {
     alert('Please log in first');
     window.location.href = 'login.html';
     return;
   }
+  console.log('Using token:', token); // Debug token
 
   const table = $('#marksTable').DataTable({
     ajax: {
@@ -13,8 +14,9 @@ $(document).ready(function () {
       headers: { Authorization: `Bearer ${token}` },
       dataSrc: '',
       error: function (xhr, error, thrown) {
-        console.error('DataTables AJAX error:', xhr.status, xhr.responseText);
-        alert('Failed to load marks: ' + xhr.responseText);
+        const errorMessage = xhr.responseText || 'An unknown error occurred';
+        console.error('DataTables AJAX error:', xhr.status, errorMessage, thrown);
+        alert('Failed to load marks: ' + errorMessage);
       },
     },
     columns: [
@@ -22,7 +24,7 @@ $(document).ready(function () {
       { data: 'name' },
       { data: 'semester_id' },
       { data: 'subject_name' },
-      { 
+      {
         data: null,
         render: function (data, type, row) {
           return `${row.marks_obtained} / ${row.total_marks}`;
@@ -52,8 +54,9 @@ $(document).ready(function () {
         $('#markForm')[0].reset();
       },
       error: function (err) {
-        console.error('Add mark error:', err.responseText);
-        alert('Failed to add mark: ' + err.responseText);
+        const errorMessage = err.responseText || 'An unknown error occurred';
+        console.error('Add mark error:', errorMessage);
+        alert('Failed to add mark: ' + errorMessage);
       },
     });
   });

@@ -1,0 +1,1 @@
+const BACKEND_API_BASE_URL = 'https://student-records-app-backend.vercel.app';

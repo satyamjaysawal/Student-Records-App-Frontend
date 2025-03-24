@@ -1,7 +1,5 @@
 $(document).ready(function () {
-  // const BACKEND_API_BASE_URL = 'http://localhost:5000'; 
-  const BACKEND_API_BASE_URL = 'https://student-records-app-backend.vercel.app'; 
-
+  // BACKEND_API_BASE_URL is now from config.js
   $('#registerForm')?.submit(function (e) {
     e.preventDefault();
     const username = $('#regUsername').val();
@@ -17,8 +15,9 @@ $(document).ready(function () {
         window.location.href = 'login.html';
       },
       error: function (err) {
-        console.error('Register error:', err.responseText);
-        alert('Registration failed: ' + err.responseText);
+        const errorMessage = err.responseText || 'An unknown error occurred';
+        console.error('Register error:', errorMessage);
+        alert('Registration failed: ' + errorMessage);
       },
     });
   });
@@ -39,8 +38,9 @@ $(document).ready(function () {
         window.location.href = 'index.html';
       },
       error: function (err) {
-        console.error('Login error:', err.responseText);
-        alert('Login failed: ' + err.responseText);
+        const errorMessage = err.responseText || 'An unknown error occurred';
+        console.error('Login error:', errorMessage);
+        alert('Login failed: ' + errorMessage);
       },
     });
   });
@@ -55,8 +55,9 @@ $(document).ready(function () {
         window.location.href = 'login.html';
       },
       error: function (err) {
-        console.error('Logout error:', err.responseText);
-        alert('Logout failed: ' + err.responseText);
+        const errorMessage = err.responseText || 'An unknown error occurred';
+        console.error('Logout error:', errorMessage);
+        alert('Logout failed: ' + errorMessage);
       },
     });
   });

@@ -1,6 +1,5 @@
 $(document).ready(function () {
-  // const BACKEND_API_BASE_URL = 'http://localhost:5000'; 
-  const BACKEND_API_BASE_URL = 'https://student-records-app-backend.vercel.app'; 
+  // BACKEND_API_BASE_URL is now from config.js
   const token = localStorage.getItem('token');
   if (!token) {
     alert('Please log in first');
@@ -14,8 +13,9 @@ $(document).ready(function () {
       headers: { Authorization: `Bearer ${token}` },
       dataSrc: '',
       error: function (xhr, error, thrown) {
-        console.error('DataTables AJAX error:', xhr.status, xhr.responseText);
-        alert('Failed to load students: ' + xhr.responseText);
+        const errorMessage = xhr.responseText || 'An unknown error occurred';
+        console.error('DataTables AJAX error:', xhr.status, errorMessage, thrown);
+        alert('Failed to load students: ' + errorMessage);
       },
     },
     columns: [
@@ -47,8 +47,9 @@ $(document).ready(function () {
         $('#studentForm')[0].reset();
       },
       error: function (err) {
-        console.error('Add student error:', err.responseText);
-        alert('Failed to add student: ' + err.responseText);
+        const errorMessage = err.responseText || 'An unknown error occurred';
+        console.error('Add student error:', errorMessage);
+        alert('Failed to add student: ' + errorMessage);
       },
     });
   });
