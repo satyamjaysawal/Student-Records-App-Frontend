@@ -1,6 +1,8 @@
 # 🎓 Student Records App (Full-Stack)
 
 A web application for managing student information and marks, built with **Node.js, Express, PostgreSQL, and jQuery (DataTables.net)**.  
+![image](https://github.com/user-attachments/assets/705cc219-6d3a-4c10-801d-d4825dbf2a5f)
+
 ![image](https://github.com/user-attachments/assets/e7637026-fc43-4375-939e-139ac2c1f379)
 
 ## 🚀 Live Demo
