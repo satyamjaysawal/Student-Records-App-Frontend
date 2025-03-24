@@ -1,9 +1,7 @@
 $(document).ready(function () {
-  // BACKEND_API_BASE_URL is now from config.js
   const token = localStorage.getItem('token');
   if (!token) {
-    alert('Please log in first');
-    window.location.href = 'login.html';
+    window.location.href = 'login.html'; // Redirect to login if not logged in
     return;
   }
   console.log('Using token:', token); // Debug token
@@ -17,6 +15,10 @@ $(document).ready(function () {
         const errorMessage = xhr.responseText || 'An unknown error occurred';
         console.error('DataTables AJAX error:', xhr.status, errorMessage, thrown);
         alert('Failed to load marks: ' + errorMessage);
+        if (xhr.status === 401 || xhr.status === 403) { // Unauthorized or Forbidden
+          localStorage.removeItem('token'); // Clear invalid token
+          window.location.href = 'login.html'; // Redirect to login
+        }
       },
     },
     columns: [
@@ -57,6 +59,10 @@ $(document).ready(function () {
         const errorMessage = err.responseText || 'An unknown error occurred';
         console.error('Add mark error:', errorMessage);
         alert('Failed to add mark: ' + errorMessage);
+        if (err.status === 401 || err.status === 403) {
+          localStorage.removeItem('token');
+          window.location.href = 'login.html';
+        }
       },
     });
   });

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // BACKEND_API_BASE_URL is now from config.js
   $('#registerForm')?.submit(function (e) {
     e.preventDefault();
     const username = $('#regUsername').val();
