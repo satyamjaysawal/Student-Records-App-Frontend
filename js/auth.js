@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  const BACKEND_API_BASE_URL = 'http://localhost:5000'; // Hardcoded for static files
+  // const BACKEND_API_BASE_URL = 'http://localhost:5000'; 
+  const BACKEND_API_BASE_URL = 'https://student-records-app-backend.vercel.app'; 
 
   $('#registerForm')?.submit(function (e) {
     e.preventDefault();
