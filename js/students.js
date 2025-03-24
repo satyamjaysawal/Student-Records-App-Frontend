@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const token = localStorage.getItem('token');
   if (!token) {
-    window.location.href = 'login.html'; // Redirect to login if not logged in
+    window.location.href = 'login.html';
     return;
   }
 
@@ -14,9 +14,9 @@ $(document).ready(function () {
         const errorMessage = xhr.responseText || 'An unknown error occurred';
         console.error('DataTables AJAX error:', xhr.status, errorMessage, thrown);
         alert('Failed to load students: ' + errorMessage);
-        if (xhr.status === 401 || xhr.status === 403) { // Unauthorized or Forbidden
-          localStorage.removeItem('token'); // Clear invalid token
-          window.location.href = 'login.html'; // Redirect to login
+        if (xhr.status === 401 || xhr.status === 403) {
+          localStorage.removeItem('token');
+          window.location.href = 'login.html';
         }
       },
     },
@@ -26,7 +26,37 @@ $(document).ready(function () {
       { data: 'dob' },
       { data: 'mobile' },
       { data: 'email' },
+      {
+        data: null,
+        render: function (data, type, row) {
+          return '<button class="btn btn-danger btn-sm delete-student" data-id="' + row.id + '">X</button>';
+        }
+      }
     ],
+  });
+
+  // Handle delete student click
+  $('#studentTable').on('click', '.delete-student', function () {
+    const studentId = $(this).data('id');
+    if (confirm('Are you sure you want to delete this student?')) {
+      $.ajax({
+        url: `${BACKEND_API_BASE_URL}/api/students/${studentId}`,
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+        success: function () {
+          table.ajax.reload();
+        },
+        error: function (err) {
+          const errorMessage = err.responseText || 'An unknown error occurred';
+          console.error('Delete student error:', errorMessage);
+          alert('Failed to delete student: ' + errorMessage);
+          if (err.status === 401 || err.status === 403) {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+          }
+        },
+      });
+    }
   });
 
   $('#studentForm').submit(function (e) {
