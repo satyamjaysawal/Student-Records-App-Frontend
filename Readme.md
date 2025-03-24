@@ -3,8 +3,8 @@
 A web application for managing student information and marks, built with **Node.js, Express, PostgreSQL, and jQuery (DataTables.net)**.  
 
 ## 🚀 Live Demo
-- **Frontend**: [Student Records Frontend](https://student-records-app-frontend.vercel.app)  
-- **Backend API**: [Student Records Backend](https://student-records-app-backend.vercel.app)  
+- **Frontend**: [https://student-records-app-frontend.vercel.app](https://student-records-app-frontend.vercel.app)  
+- **Backend API**: [https://student-records-app-backend.vercel.app](https://student-records-app-backend.vercel.app)  
 
 ---
 
@@ -61,11 +61,11 @@ student-records-app/
 ### 1️⃣ **Clone the Repositories**
 ```bash
 # Clone Frontend
-git clone https://github.com/your-username/student-records-app-frontend.git
+git clone https://github.com/satyamjaysawal/Student-Records-App-Frontend.git
 cd student-records-app-frontend
 
 # Clone Backend
-git clone https://github.com/your-username/student-records-app-backend.git
+git clone https://github.com/satyamjaysawal/Student-Records-App-Backend.git
 cd student-records-app-backend
 ```
 
@@ -92,7 +92,7 @@ BACKEND_API_BASE_URL=https://student-records-app-backend.vercel.app
 ```bash
 npm start
 ```
-- API will run at `http://localhost:5000`  
+- API will run at `http://localhost:5000 || https://student-records-app-frontend.vercel.app/`  
 
 ---
 
@@ -103,7 +103,7 @@ cd student-records-app-frontend
 npm install -g live-server
 live-server
 ```
-- The frontend will be available at `http://localhost:8080`
+- The frontend will be available at `http://localhost:8080 || https://student-records-app-backend.vercel.app`
 
 ---
 
