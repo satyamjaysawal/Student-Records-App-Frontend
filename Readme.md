@@ -8,6 +8,9 @@ A web application for managing student information and marks, built with **Node.
 ## 🚀 Live Demo
 - **Frontend**: [https://student-records-app-frontend.vercel.app](https://student-records-app-frontend.vercel.app)  
 - **Backend API**: [https://student-records-app-backend.vercel.app](https://student-records-app-backend.vercel.app)  
+- **Frontend Github**: [https://github.com/satyamjaysawal/Student-Records-App-Frontend.git](https://github.com/satyamjaysawal/Student-Records-App-Frontend.git)
+- **Backend Github**: [https://github.com/satyamjaysawal/Student-Records-App-Backend.git](https://github.com/satyamjaysawal/Student-Records-App-Backend.git)
+
 
 ---
 
